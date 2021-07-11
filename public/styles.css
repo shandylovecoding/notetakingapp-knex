@@ -1,0 +1,62 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+.notesContainer{
+    padding: 50px;
+}
+.notes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #f0c806;
+    border-radius: 8px;
+    width: 280px;
+    margin: 0 10px 20px;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+    transition: all 0.2s;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+}
+.notes:hover{
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+}
+.note-header{
+    padding: 10px 16px 0;
+}
+
+.note-cross{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    line-height: 24px;
+    text-align: center;
+    transition: all 0.3s;
+}
+.note-cross{
+    float: right;
+}
+
+.note-cross:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+.note-cross:focus{
+    box-shadow: inset 2px 3px 0px rgba(0,0,0,0.8);
+}
+
+.note-title{
+    font-size: 24px;
+    padding: 10px 0px;
+}
+
+.note-body{
+    font-size: 20px;
+    padding: 10px 16px 16px;
+}
+
