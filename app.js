@@ -8,7 +8,11 @@ var myAuthorizer = require('./myAuthorizer')
 var NoteRouter = require('./routers/noteRouter')
 var NoteService = require('./service/noteService')
 
-
+require("dotenv").config();
+const knexConfig=require("./knexfile")["development"];
+const knex=require("knex")(knexConfig);
+const bodyParser=require("body-parser");
+app.use(bodyParser.json());
 
 
 //Frontend Stuff
@@ -22,13 +26,13 @@ app.use(express.static("public"))
 
 
 app.use(basicAuth({
-    authorizer: myAuthorizer,
-    challenge: true,
-    authorizeAsync: true,
-    realm: 'My Application'
+    authorizeAsync:true,
+    authorizer:myAuthorizer(knex),
+    challenge:true,
+    realm:"NoteTakingwithknex",
 }));
 
-const noteService = new NoteService(path.join(__dirname, "./stores/notes.json"))
+const noteService = new NoteService(knex)
 
 app.get('/', (req, res) => {
     noteService.list(req.auth.user).then((data) => {

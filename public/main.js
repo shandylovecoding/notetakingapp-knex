@@ -5,9 +5,9 @@ var notesTemplate = Handlebars.compile(
     `
     {{#each notes}}
             <div class="note">
-                <span class="input"><textarea data-id="{{ @index }}">{{ this }}</textarea></span>
+                <span class="input"><textarea data-id="{{id}}">{{content}}</textarea></span>
 
-                <button class="remove btn btn-xs" data-id="{{ @index }}"><i class="fa fa-times"
+                <button class="remove btn btn-xs" data-id="{{id}}"><i class="fa fa-times"
                         aria-hidden="true"></i></button>
             </div>
             {{/each}}
@@ -17,7 +17,8 @@ var notesTemplate = Handlebars.compile(
   // This function is responsible of re-rendering the page every time we update our notes. It recieves the array of notes and then forces each note (each element within the array) into the notes template, which iterates through the array rendering all the notes to the DOM in the same format.
   const reloadNotes = (notes) => {
     // console.log(8);
-    $("#notes").html(notesTemplate({ notes: notes }));
+    $("#notes").html(notesTemplate({notes: notes}));
+    console.log("main.js notes",notes);
   };
   
   // Document on ready function, when the document has fully loaded we can do everything within this block of code.

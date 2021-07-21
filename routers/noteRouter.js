@@ -43,6 +43,7 @@ class NoteRouter {
         };
 
         delete (req,res){
+            console.log(">>>>req.params.id",req.params.id);
             return this.noteService.remove(req.params.id, req.auth.user)
                 .then(()=> this.noteService.list(req.auth.user))
                     .then((notes)=> res.json(notes))
